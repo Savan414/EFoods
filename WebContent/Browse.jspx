@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+	crossorigin="anonymous"></link>
+<link rel="stylesheet" href="res/Style.css"></link>
+<title>Foods R US</title>
+</head>
+<body>
+
+	<jsp:include page="nav.jspx" />
+
+	<div class="container-fluid padding">
+		<div class="row welcome text-center">
+			<div class="col-12">
+				<a href="Browse"><button type="button"
+						class="btn btn-info btn-lg">Browse Categories</button></a> <br></br>
+				<hr class="my-3"></hr>
+			</div>
+
+		</div>
+
+		<div class="container-fluid padding">
+			<div class="row text-center padding">
+				<c:forEach var="e" items="${catalogs }">
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<p class="category-image"
+							style="background-image: url('${pageContext.request.contextPath}/res/images/${e.name}.jpg');">
+						</p>
+						<h3>
+							<a href='Browse?cat=${e.id} '>${e.name }</a>
+						</h3>
+						<p>${e.description }</p>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<hr class="my-1"></hr>
+	</div>
+
+	<c:if test="${not empty items }">
+		<div class="container-fluid padding" id="items">
+			<br></br>
+			<h2 class="text-center">Browse Items Listing</h2>
+			<form action="Browse" method="POST">
+				<input type="hidden" name="cat" value="${cat }" /> <input
+					type="hidden" name="number" value="${number }" />
+				<div class="form-control center text-center" style="width: 190px;">
+					<select name="orderBy">
+						<option selected="any" value="NONE">Select One:</option>
+						<option value="PRICE">Price</option>
+						<option value="NAME">Name</option>
+					</select>
+					<button class="btn btn-info btn-sm" type="submit" name="sort"
+						value="sort">Sort</button>
+				</div>
+
+			</form>
+			<br></br>
+			<hr></hr>
+			<div class="row">
+				<c:forEach var="e" items="${items }">
+					<div class="col-sm-4 col-md-3">
+						<div
+							class="pannel panel-primary item col-md-10 col-sm-6 col-xs-12">
+							<div class="col-md-10 col-sm-10 col-xs-10">
+								<div class="panel-heading item-name">${e.name }</div>
+								<div class="panel-body item_no">Item No.: ${e.number }</div>
+								<div>
+									<fmt:formatNumber type="currency" value="${e.price }" />
+									/ ${e.unit }
+								</div>
+								<form action="Add" method="POST">
+									<div>
+										<label for="qty">Qty: </label> <input type="number" name="qty"
+											value="1" step="1" />
+									</div>
+									<input type="hidden" name="number" value="${e.number }" />
+									<div>
+										<button type="submit" name="select_item" value="Add To Cart"
+											class="btn btn-success btn-md">Add To Cart</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+
+			</div>
+		</div>
+	</c:if>
+
+	
+	<div id="error">
+		<c:if test="${not empty error }">
+		<div class="isa_error text-center">
+		<i class="fa fa-times-circle">${error }</i> 
+		</div>
+		</c:if>
+	</div>
+
+
+</body>
+	</html>
+</jsp:root>

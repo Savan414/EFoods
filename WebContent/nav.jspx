@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="false" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+	crossorigin="anonymous"></link>
+<link rel="stylesheet" href="res/Style.css"></link>
+<title>Foods R US</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="Browse">Foods R Us</a>
+			</div>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+
+				<ul class="nav navbar-nav ml-auto">
+					<li>
+						<form class="form-inline" action="Browse" method="post">
+							<input class="form-control mr-sm-2" type="string"
+								placeholder="Enter the Item No." name="number" />
+							<button class="btn btn-success" type="submit" name="select_item"
+								value="search">Search</button>
+						</form>
+					</li>
+
+					<li><a class="nav-link" href="Add">Cart</a></li>
+					<li><a class="nav-link" href="Account">Account</a></li>
+					<c:if test="${empty user}">
+						<li><a class="nav-link" href="Login?login=true">Log In</a></li>
+					</c:if>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row jumbotron">
+			<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+				<h1><strong>Fast, Reliable, Convenient</strong></h1>
+				<p class="lead"><strong>Foods R Us provides a wide variety of gourmet grocery items at great prices. 
+								Our products are all of the highest quality. Avoid wasting time at your local 
+								grocery store and simply order your groceries online and have them delivered 
+								right to your door!</strong>
+				</p>
+				<br></br>	
+			<br></br>
+			</div>
+		</div>
+	</div>
+
+</body>
+	</html>
+</jsp:root>
+
+
+
+
+
+
+
+
+
+
+
+

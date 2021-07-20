@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+			xmlns:c="http://java.sun.com/jsp/jstl/core"
+			xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+<jsp:directive.page contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8" session="false"/>
+<jsp:output doctype-root-element="html"
+	doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+	doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+	omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head >
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" rel="stylesheet" />	
+	<title>Foods R US</title>
+</head>
+<body><div class="container">
+
+	<div class="panel-heading"><h2>Analytics Report</h2></div>
+	
+	 <div class="panel-group">
+	 	<div class="panel panel-info">
+	 		<div class="panel-heading">Average Time Users Add Items to Cart: </div>
+	 		<div class="panel-body">
+		 		<c:choose>
+					<c:when test="${ not empty rpt_AddItem}">${rpt_AddItem }</c:when>
+					<c:otherwise>
+						<fmt:formatNumber maxFractionDigits="3" value="${ aveAddItem}" /> seconds
+					</c:otherwise>
+				</c:choose>
+	 		</div>
+	 	</div>
+	 	
+	 	<div class="panel panel-info">
+	 		<div class="panel-heading">Average Time Users Checkout: </div>
+	 		<div class="panel-body">
+		 		<c:choose>
+					<c:when test="${ not empty rpt_Checkout}">${rpt_Checkout }</c:when>
+					<c:otherwise>
+						<fmt:formatNumber maxFractionDigits="3" value="${ aveCheckout}" /> seconds
+					</c:otherwise>
+				</c:choose>
+	 		</div>
+	 	</div> 	
+	 </div>
+		
+</div></body>
+</html>
+</jsp:root>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+		  xmlns:c="http://java.sun.com/jsp/jstl/core"
+		  xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+<jsp:directive.page contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8" session="false"/>
+<jsp:output doctype-root-element="html"
+	doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+	doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+	omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head >
+	<title>Foods R US</title>
+</head>
+<body>
+<c:if test="${not empty order}">
+
+         <div>
+	               <h1>Details of Order:</h1>
+	              
+	               Account Name: ${order.account}<br/>
+	               Order number: ${order.orderNumber}<br/>
+	               Order date: ${order.submitted}<br/>
+
+         </div>
+         <div>
+               <h2>Your order items:</h2>
+               <table border="1">
+                  <tbody>
+                     <tr>
+                        <td>Product ID</td>
+                        <td>Name</td>
+                        <td>Price</td>
+                        <td>Quantity</td>
+                     </tr>
+                     
+                     <c:forEach var="e" items="${order.items}">
+	                     <tr>
+	                        <td>${e.number}</td>
+	                        <td>${e.name}</td>
+	                        <td>$${e.price}</td>
+	                        <td>${e.quantity}</td>
+	                     </tr>
+                     </c:forEach>
+   
+                  </tbody>
+               </table>
+         </div>
+
+		<div>
+               <table>
+                  <tbody>
+                     <tr>
+                        <td></td>
+                        <td>Sub-Total:</td>
+                        <td>$${order.total}</td>
+                     </tr>
+                     <tr>
+                        <td></td>
+                        <td>HST:</td>
+                        <td>$${order.HST}</td>
+                     </tr>
+                     <tr>
+                        <td></td>
+                        <td>Shipping:</td>
+                        <td>$${order.shipping}</td>
+                     </tr>
+                     <tr>
+                        <td></td>
+                        <td>Grand Total:</td>
+                        <td>$${order.grandTotal}</td>
+                     </tr>
+                  </tbody>
+               </table>
+         </div>
+
+
+      <div>
+        
+           <button onclick="javascript:window.print()">Print Window</button>
+
+      </div>
+
+</c:if>
+
+<c:if test="${empty order}">
+	<jsp:include page="nav.jspx"/>
+	<h1>New Orders (Not Processed)</h1>
+</c:if>
+
+<c:if test="${not empty fileNames}">
+		<c:forEach var="e" items="${fileNames}">
+			<a target="_blank" href="Account?view=${e}">${e}</a><br/> 
+		</c:forEach>
+</c:if>
+
+<h1>Old Orders (Processed)</h1>
+<c:if test="${not empty processedfileNames}">
+		<c:forEach var="e" items="${processedfileNames}">
+			<a target="_blank" href="Account?view=${e}">${e}</a><br/> 
+		</c:forEach>
+</c:if>
+
+<c:if test="${not empty error}">
+	<h1 style="color:red;">${error}</h1>
+</c:if>
+
+</body>
+</html>
+</jsp:root>
+
+
+
+
+
+
+
+
+
+
+
+

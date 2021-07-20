@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+		  xmlns:c="http://java.sun.com/jsp/jstl/core"
+		  xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+<jsp:directive.page contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8" session="false"/>
+<jsp:output doctype-root-element="html"
+	doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+	doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+	omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head >
+	<title>Foods R US</title>
+</head>
+<body>
+<jsp:include page="nav.jspx"/>
+<c:if test="${not empty order}">
+  <h2>${order.account}, your order has been processed</h2>
+ </c:if>
+ 
+ <h1>Not Processed files</h1>
+<c:if test="${not empty fileNames}">
+		<c:forEach var="e" items="${fileNames}">
+			<a target="_blank" href="Account?view=${e}">${e}</a><br/> 
+		</c:forEach>
+</c:if>
+
+<h1>Processed Files</h1>
+<c:if test="${not empty processedfileNames}">
+		<h1>Old Orders (Processed)</h1>
+		<c:forEach var="e" items="${processedfileNames}">
+			<a target="_blank" href="Account?view=${e}">${e}</a><br/> 
+		</c:forEach>
+</c:if>
+</body>
+</html>
+</jsp:root>
+
+
+
+
+
+
+
+
+
+
+
+
+
