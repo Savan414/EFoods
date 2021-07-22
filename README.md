@@ -8,6 +8,7 @@ Submitted as the final project for the course **EECS4413-Building E-Commerce Sys
 ## Table of Contents
 * [Technologies Used](#technologies-used)
 * [Screenshots](#screenshots)
+* [Deployment](#deployment)
 * [Design](#design)
 * [Implementation](#implementation)
 * [Project Status](#project-status)
@@ -53,6 +54,11 @@ Submitted as the final project for the course **EECS4413-Building E-Commerce Sys
 
 #### The page for admin to view analytics report
 ![Analytics](./WebContent/res/images/analytics.jpg)
+
+## Deployment
+To open this webapp, use Eclipse IDE for Java EE Developers.
+Right-click on the project and select "Run As / Run on Server" in the shortcut menu.
+Alternatively export a `.war`-file and deploy it to your tomcat server.
 
 ## Design
 ![Design Diagram](./WebContent/res/images/design.jpg)
